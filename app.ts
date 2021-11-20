@@ -1,39 +1,76 @@
 import { TimeUnit } from "./interface/car";
 import { Ferrari, FerrariSpeedUpMode } from "./products/Ferrari";
+import { Toyota, ToyotaSpeedUpMode } from "./products/toyota";
 
 
-const myCar = new Ferrari('RL-0001');
+const myFerrariCar = new Ferrari('RL-0001');
 
 console.log('-------------');
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.launch();
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+myFerrariCar.launch();
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.moveForward({
+myFerrariCar.moveForward({
   time: 3,
   unit: TimeUnit.MINUTE,
 })
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.speedUp(FerrariSpeedUpMode.MEDIUM);
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+myFerrariCar.speedUp(FerrariSpeedUpMode.MEDIUM);
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.speedUp(FerrariSpeedUpMode.SLOW);
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+myFerrariCar.speedUp(FerrariSpeedUpMode.SLOW);
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.moveForward({
+myFerrariCar.moveForward({
   time: 1,
   unit: TimeUnit.HOUR,
 })
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
 console.log('-------------');
-myCar.stop();
-console.log(myCar.getCurrentSpeed());
-console.log(myCar.getCurrentPosition());
+myFerrariCar.stop();
+console.log(myFerrariCar.getCurrentSpeed());
+console.log(myFerrariCar.getCurrentPosition());
+
+const myToyotaCar = new Toyota('RL-0002');
+
+console.log('-------------');
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.launch();
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.moveForward({
+  time: 3,
+  unit: TimeUnit.MINUTE,
+})
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.speedUp(ToyotaSpeedUpMode.MEDIUM);
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.speedUp(ToyotaSpeedUpMode.SLOW);
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.moveForward({
+  time: 1,
+  unit: TimeUnit.HOUR,
+})
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
+console.log('-------------');
+myToyotaCar.stop();
+console.log(myToyotaCar.getCurrentSpeed());
+console.log(myToyotaCar.getCurrentPosition());
