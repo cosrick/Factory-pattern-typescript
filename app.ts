@@ -1,10 +1,8 @@
 import { TimeUnit } from "./interface/car";
-import { Ferrari, FerrariSpeedUpMode } from "./products/Ferrari";
-import { Toyota, ToyotaSpeedUpMode } from "./products/toyota";
-
+import { Ferrari, FerrariSpeedUpMode, Toyota, ToyotaSpeedUpMode } from "./products";
 
 const myFerrariCar = new Ferrari('RL-0001');
-
+console.log(myFerrariCar.getLicense());
 console.log('-------------');
 console.log(myFerrariCar.getCurrentSpeed());
 console.log(myFerrariCar.getCurrentPosition());
@@ -40,7 +38,7 @@ console.log(myFerrariCar.getCurrentSpeed());
 console.log(myFerrariCar.getCurrentPosition());
 
 const myToyotaCar = new Toyota('RL-0002');
-
+console.log(myToyotaCar.getLicense());
 console.log('-------------');
 console.log(myToyotaCar.getCurrentSpeed());
 console.log(myToyotaCar.getCurrentPosition());
@@ -82,7 +80,7 @@ import { CarFactory, CarBrand } from "./car-factory";
 const carFactory = new CarFactory();
 
 const myFerrariCarByFactory = carFactory.produceCar(CarBrand.FERRARI, 'RL-003');
-
+console.log(myFerrariCarByFactory.getLicense());
 console.log('-------------');
 console.log(myFerrariCarByFactory.getCurrentSpeed());
 console.log(myFerrariCarByFactory.getCurrentPosition());
@@ -118,7 +116,7 @@ console.log(myFerrariCarByFactory.getCurrentSpeed());
 console.log(myFerrariCarByFactory.getCurrentPosition());
 
 const myToyotaCarByFactory = carFactory.produceCar(CarBrand.TOYOTA, 'RL-004');
-
+console.log(myToyotaCarByFactory.getLicense());
 console.log('-------------');
 console.log(myToyotaCarByFactory.getCurrentSpeed());
 console.log(myToyotaCarByFactory.getCurrentPosition());
