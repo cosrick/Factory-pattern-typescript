@@ -1,9 +1,9 @@
-enum TimeUnit {
+export enum TimeUnit {
   HOUR = 'hour',
   MINUTE = 'minute',
 }
 
-interface MoveProps {
+export interface MoveProps {
   readonly time: number;
   readonly unit: TimeUnit;
 }
@@ -11,6 +11,9 @@ interface MoveProps {
 export interface CarProps{
   readonly license: string;
   readonly maxSpeed: number;
+  readonly breakSpeed: number;
+  readonly accelerateSpeed: number;
+  readonly accelerateTime: number;
 }
 
 
@@ -36,11 +39,30 @@ export abstract class Car {
    */
   protected currentPosition: number;
 
+  /**
+   * How fast the speed would reduce when break
+   */
+  protected breakSpeed: number;
+
+  /**
+   * How fast the speed would increase when speedup
+   */
+   protected accelerateSpeed: number;
+
+   /**
+   * How long the car would take to speed up
+   */
+  protected accelerateTime: number;
+   
+
   constructor(props: CarProps) {
     this.license = props.license;
     this.maxSpeed = props.maxSpeed;
     this.currentPosition = 0;
     this.currentSpeed = 0;
+    this.breakSpeed = props.breakSpeed;
+    this.accelerateSpeed = props.accelerateSpeed;
+    this.accelerateTime = props.accelerateTime;
   }
 
   public getLicense(): string {
@@ -51,8 +73,24 @@ export abstract class Car {
     return this.currentPosition;
   }
 
+  public getCurrentSpeed(): number {
+    return this.currentSpeed;
+  }
+
   public getMaxSpeed(): number {
     return this.maxSpeed;
+  }
+
+  public getAccelerateSpeed(): number {
+    return this.accelerateSpeed;
+  }
+
+  public getAccelerateTime(): number {
+    return this.accelerateTime;
+  }
+
+  public getBreakSpeed(): number {
+    return this.breakSpeed;
   }
 
   /**
@@ -60,12 +98,20 @@ export abstract class Car {
    * @param props how long this car would move
    */
   public moveForward(props: MoveProps) {
+
+    if (this.currentSpeed == 0) {
+      console.log('You have to launch first');
+      return;
+    }
+    
     switch(props.unit) {
       case TimeUnit.HOUR: {
         this.currentPosition = this.currentPosition + this.currentSpeed * props.time * 60;
+        break;
       }
       case TimeUnit.MINUTE: {
         this.currentPosition = this.currentPosition + this.currentSpeed;
+        break;
       }
       default: throw new Error('Unaccepetable unit');
     }
@@ -76,24 +122,42 @@ export abstract class Car {
    * @param props how long this car would move
    */
   public moveBackward(props: MoveProps) {
+    
+    if (this.currentSpeed == 0) {
+      console.log('You have to launch first');
+      return;
+    }
+
     switch(props.unit) {
       case TimeUnit.HOUR: {
         this.currentPosition = this.currentPosition - this.currentSpeed * props.time * 60;
+        break;
       }
       case TimeUnit.MINUTE: {
         this.currentPosition = this.currentPosition - this.currentSpeed;
+        break;
       }
       default: throw new Error('Unaccepetable unit');
     }
   }
 
-  /**
-   * Implement by child class, since the cars from different brands would have different launch pattern
+  public launch() {
+    if (this.currentSpeed > 0) {
+      console.log('This car has launched');
+    } else {
+      this.currentSpeed = this.currentSpeed + 10;
+    }
+    return;
+  }
+
+   /**
+   * Implement by child class, since the cars from different brands would have different stop pattern
    */
-  public abstract launch(): void;
+    public abstract stop(): void;
   /**
    * Implement by child class, since the cars from different brands would have different speed up pattern
    */
-  public abstract speedUp(): void;
+  public abstract speedUp(_mode: any): void;
+  
 
 }
