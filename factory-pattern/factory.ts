@@ -1,4 +1,4 @@
-import { Car } from './interface/car';
+import { Car } from './interface';
 import { Ferrari, Toyota } from './products';
 
 export enum CarBrand {

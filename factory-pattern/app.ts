@@ -1,4 +1,4 @@
-import { TimeUnit } from "./interface/car";
+import { TimeUnit } from "./interface";
 import { Ferrari, FerrariSpeedUpMode, Toyota, ToyotaSpeedUpMode } from "./products";
 
 const myFerrariCar = new Ferrari('RL-0001');
