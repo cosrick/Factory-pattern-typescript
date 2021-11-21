@@ -75,7 +75,7 @@ console.log(myToyotaCar.getCurrentPosition());
 
 
 
-import { CarFactory, CarBrand } from "./car-factory";
+import { CarFactory, CarBrand } from "./factory";
 
 const carFactory = new CarFactory();
 
